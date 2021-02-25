@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # apps de terceros
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# crispy_forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

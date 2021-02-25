@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-md-center">
+  <div class="col-md-8">
+    <br>
+    <div class="card">
+      <h5 class="card-header"> {{snippet.name}}</h5>
+      <div class="card-body">
+        <form method="post">
+                 {% csrf_token %}
+                 <div class="alert alert-warning" role="alert">
+                     ¿Estás seguro que querés borrar este snippet? <strong>{{snippet.name}}</strong>
+                 </div>
+                 <button type="submit" class="btn btn-danger">Eliminar</button>
+             </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
