@@ -1,5 +1,9 @@
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+
+from django.views import View
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
 
 from django.views import generic
 from django.views.generic.edit import (
@@ -11,9 +15,8 @@ from django.views.generic.edit import (
 from snippets.models import Snippet
 
 
-def login(request):
-    return render(request, 'login.html', {})
-
+# def login(request):
+#     return render(request, 'login.html', {})
 
 def logout(request):
     return render(request, 'login.html', {})

@@ -14,7 +14,7 @@ class Language(models.Model):
 class Snippet(models.Model):
     # user = models.ForeignKey(Category, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=False)
     description = models.TextField(blank=True)
     snippet = models.TextField(blank=False)
