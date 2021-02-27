@@ -67,7 +67,7 @@
         <!-- FORMULARIO -->
         <form class="form-siging" method="POST">
             {% csrf_token %}
-            <img class="mb-4" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Ingresar</h1>
             <label for="inputEmail" class="sr-only">Email </label>
             {{ form.username|as_crispy_field }}

@@ -5,8 +5,14 @@
 <div class="row justify-content-md-center">
   <div class="col-md-6">
     <br>
+
+
     <form method="post">
       {% csrf_token %}
+      <p style="display: none">{{ form.user }}</p>
+
+
+
       <div class="form-group">
         {{ form.name|as_crispy_field }}
       </div>
@@ -26,11 +32,7 @@
       <div class="form-group">
         {{ form.snippet|as_crispy_field }}
       </div>
-      {% if form.name %}
-      <button type="submit" class="btn btn-primary">Editar</button>
-      {% else %}
       <button type="submit" class="btn btn-primary">Crear</button>
-      {% endif%}
     </form>
   </div>
 </div>

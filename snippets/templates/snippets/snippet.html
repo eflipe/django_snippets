@@ -7,7 +7,7 @@
     <div class="card">
       <h5 class="card-header">{{snippet.name}} <a href="{% url 'user_snippets' %}"  class="float-right"><small>user1</small></a></h5>
       <div class="card-body">
-        <a href="{% url 'language' %}"><h5 class="card-title">{{snippet.language}}</h5></a>
+        <a href="{% url 'language' snippet.language.slug %}"><h5 class="card-title">{{snippet.language}}</h5></a>
         <h6 class="card-subtitle mb-2 text-muted">Creado: {{snippet.created}}</h6>
         <p class="card-text">{{snippet.description}}</p>
         <div style="background-color:lightgray;border-radius: 5px;">

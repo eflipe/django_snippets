@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from django.views import View
 from django.contrib.auth import authenticate, login
@@ -12,14 +12,7 @@ from django.views.generic.edit import (
     DeleteView
 )
 
-from snippets.models import Snippet
-
-
-# def login(request):
-#     return render(request, 'login.html', {})
-
-def logout(request):
-    return render(request, 'login.html', {})
+from snippets.models import Snippet, Language
 
 
 class IndexListView(generic.ListView):
@@ -29,8 +22,15 @@ class IndexListView(generic.ListView):
     template_name = 'index.html'
 
 
-def language(request):
-    return render(request, 'index.html', {})
+class LanguageListView(generic.ListView):
+    model = Snippet
+
+    def get_queryset(self, *args, **kwargs):
+        qs = self.model.objects.all()
+        return qs.filter(language__slug=self.kwargs['slug'])
+
+    context_object_name = 'snippets_list'
+    template_name = 'index.html'
 
 
 def user_snippets(request):
@@ -51,6 +51,14 @@ class SnippetCreation(CreateView):
     fields = '__all__'
     template_name = 'snippets/snippet_add.html'  # Specify your own template name/location
     success_url = reverse_lazy('index')
+
+
+    def get_initial(self):
+        initial = super(SnippetCreation, self).get_initial()
+        initial.update({'user': self.request.user})
+        return initial
+
+
 
 
 # def snippet_edit(request):
