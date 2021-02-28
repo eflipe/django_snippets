@@ -6,8 +6,10 @@
         <br>
         <!-- SNIPPET -->
         {% if snippets_list %}
+
           {% for snippet in  snippets_list %}
 
+          {% if snippet.public %}
           <div class="card">
             <h5 class="card-header">{{snippet.description}} <a href="{% url 'user_snippets' snippet.user%}"  class="float-right"><small>{{snippet.user}}</small></a></h5>
             <div class="card-body">
@@ -21,6 +23,7 @@
             </div>
           </div>
           <br>
+          {% endif %}
           {% endfor %}
         {% else %}
         <p>No hay datos.</p>

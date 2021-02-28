@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     # Apps de terceros
     'crispy_forms',
+    'django_pygments',
 ]
 
 MIDDLEWARE = [

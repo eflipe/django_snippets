@@ -11,6 +11,7 @@ pygments = "==2.4.2"
 pytz = "==2019.2"
 sqlparse = "==0.3.0"
 django-crispy-forms = "*"
+django-pygments = "*"
 
 [requires]
 python_version = "3.7"
