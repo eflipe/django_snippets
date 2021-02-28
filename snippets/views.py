@@ -40,8 +40,6 @@ class UserSnippetsListView(generic.ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = self.model.objects.all()
-        print("USER", self.kwargs['username'])
-        print("TYPE", type(self.kwargs['username']))
         return qs.filter(user__username=self.kwargs['username'])
 
     context_object_name = 'snippets_list'

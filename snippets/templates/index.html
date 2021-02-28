@@ -18,8 +18,10 @@
               <p class="card-text">{{snippet.snippet}}</p>
               <hr>
               <a href="{% url 'snippet' snippet.id %}" class="btn btn-primary">Ver</a>
+              {% if request.user == snippet.user %}
               <a href="{% url 'snippet_edit' snippet.id %}" class="btn btn-info">Editar</a>
               <a href="{% url 'snippet_delete' snippet.id %}" class="btn btn-danger">Eliminar</a>
+              {% endif %}
             </div>
           </div>
           <br>
