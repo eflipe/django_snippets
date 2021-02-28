@@ -33,8 +33,19 @@ class LanguageListView(generic.ListView):
     template_name = 'index.html'
 
 
-def user_snippets(request):
-    return render(request, 'snippets/user_snippets.html', {})
+# def user_snippets(request):
+#     return render(request, 'snippets/user_snippets.html', {})
+class UserSnippetsListView(generic.ListView):
+    model = Snippet
+
+    def get_queryset(self, *args, **kwargs):
+        qs = self.model.objects.all()
+        print("USER", self.kwargs['username'])
+        print("TYPE", type(self.kwargs['username']))
+        return qs.filter(user__username=self.kwargs['username'])
+
+    context_object_name = 'snippets_list'
+    template_name = 'snippets/user_snippets.html'
 
 
 class SnippetDetail(generic.DetailView):
@@ -52,14 +63,10 @@ class SnippetCreation(CreateView):
     template_name = 'snippets/snippet_add.html'  # Specify your own template name/location
     success_url = reverse_lazy('index')
 
-
     def get_initial(self):
         initial = super(SnippetCreation, self).get_initial()
         initial.update({'user': self.request.user})
         return initial
-
-
-
 
 # def snippet_edit(request):
 #     return render(request, 'snippets/snippet_add.html', {})
