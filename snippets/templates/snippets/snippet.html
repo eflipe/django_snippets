@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% load pygmentify %}
-
 <div class="row justify-content-md-center">
   <div class="col-md-8">
     <br>
@@ -12,16 +10,17 @@
         <a href="{% url 'language' snippet.language.slug %}"><h5 class="card-title">{{snippet.language}}</h5></a>
         <h6 class="card-subtitle mb-2 text-muted">Creado: {{snippet.time_lap}}</h6>
         <p class="card-text">{{snippet.description}}</p>
-        <div style="background-color:lightgray;border-radius: 5px;">
+        <div>
           <!-- Código del Snippet -->
           <samp>
-          {% pygment %}
-           <pre lang="snippet.language">
-               {{snippet.snippet|safe }}
-          </pre>
-          <br>
+            {% load pygmentify %}
+            {% pygment %}
 
-          {% endpygment %}
+            <pre lang="{{snippet.language}}">
+            {{snippet.snippet}}
+            </pre>
+            {% endpygment %}
+
           </samp>
           <!-- Código del Snippet -->
         </div>
