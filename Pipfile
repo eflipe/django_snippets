@@ -12,6 +12,9 @@ pytz = "==2019.2"
 sqlparse = "==0.3.0"
 django-crispy-forms = "*"
 django-pygments = "*"
+psycopg2 = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"

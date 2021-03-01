@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
@@ -26,7 +26,7 @@ class LanguageListView(generic.ListView):
     model = Snippet
 
     def get_queryset(self, *args, **kwargs):
-        qs = self.model.objects.all()
+        qs = self.model.objects.all().order_by('-updated')
         return qs.filter(language__slug=self.kwargs['slug'])
 
     context_object_name = 'snippets_list'
@@ -54,12 +54,13 @@ class SnippetDetail(generic.DetailView):
 
 # def snippet_add(request):
 #     return render(request, 'snippets/snippet_add.html', {})
-class SnippetCreation(CreateView):
+class SnippetCreation(LoginRequiredMixin, CreateView):
     model = Snippet
     context_object_name = 'snippet'   # your own name for the list as a template variable
     fields = '__all__'
     template_name = 'snippets/snippet_add.html'  # Specify your own template name/location
     success_url = reverse_lazy('index')
+    login_url = '/login/'
 
     def get_initial(self):
         initial = super(SnippetCreation, self).get_initial()

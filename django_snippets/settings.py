@@ -119,3 +119,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # login, logout
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL= 'login'
+
+# django-heroku
+import django_heroku
+django_heroku.settings(locals())
