@@ -33,8 +33,6 @@ class LanguageListView(generic.ListView):
     template_name = 'index.html'
 
 
-# def user_snippets(request):
-#     return render(request, 'snippets/user_snippets.html', {})
 class UserSnippetsListView(generic.ListView):
     model = Snippet
 
@@ -49,16 +47,14 @@ class UserSnippetsListView(generic.ListView):
 class SnippetDetail(generic.DetailView):
     model = Snippet
     context_object_name = 'snippet'
-    template_name = 'snippets/snippet.html'  # Specify your own template name/location
+    template_name = 'snippets/snippet.html'
 
 
-# def snippet_add(request):
-#     return render(request, 'snippets/snippet_add.html', {})
 class SnippetCreation(LoginRequiredMixin, CreateView):
     model = Snippet
-    context_object_name = 'snippet'   # your own name for the list as a template variable
+    context_object_name = 'snippet'
     fields = '__all__'
-    template_name = 'snippets/snippet_add.html'  # Specify your own template name/location
+    template_name = 'snippets/snippet_add.html'
     success_url = reverse_lazy('index')
     login_url = '/login/'
 
@@ -67,8 +63,7 @@ class SnippetCreation(LoginRequiredMixin, CreateView):
         initial.update({'user': self.request.user})
         return initial
 
-# def snippet_edit(request):
-#     return render(request, 'snippets/snippet_add.html', {})
+
 class SnippetEdit(UpdateView):
     model = Snippet
     context_object_name = 'snippet'
@@ -77,8 +72,6 @@ class SnippetEdit(UpdateView):
     success_url = reverse_lazy('index')
 
 
-# def snippet_delete(request):
-#     return render(request, 'snippets/user_snippets.html', {})
 class SnippetDelete(DeleteView):
     model = Snippet
     context_object_name = 'snippet'

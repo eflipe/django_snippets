@@ -99,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -119,6 +119,14 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # login, logout
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL= 'login'
+
+# celery
+BROKER_URL = 'redis://192.168.99.100:6379'
+CELERY_RESULT_BACKEND = 'redis://192.168.99.100:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Argentina/Buenos_Aires'
 
 # django-heroku
 import django_heroku

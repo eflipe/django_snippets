@@ -32,7 +32,7 @@
          <h5 class="card-header">{{ snippet.description }} <span class="badge badge-warning">Privado</span> <a href="{% url 'user_snippets' snippet.user %}"  class="float-right"><small>{{ snippet.user }}</small></a></h5>
          <div class="card-body">
              <a href="{% url 'language' snippet.language %}"><h5 class="card-title">{{ snippet.language }}</h5></a>
-             <h6 class="card-subtitle mb-2 text-muted">Creado: {{ snippet.created }}</h6>
+             <h6 class="card-subtitle mb-2 text-muted">Creado: {{snippet.time_lap}}</h6>
              <p class="card-text">{{ snippet.snippet }}</p>
              <hr>
              <a href="{% url 'snippet' snippet.id %}" class="btn btn-primary">Ver</a>

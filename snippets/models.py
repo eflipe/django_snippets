@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 
+
 class Language(models.Model):
     name = models.CharField(max_length=50, blank=False)
     slug = models.SlugField(max_length=50, unique=True)
