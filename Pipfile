@@ -15,6 +15,8 @@ django-pygments = "*"
 psycopg2 = "*"
 gunicorn = "*"
 django-heroku = "*"
+celery = "*"
+redis = "*"
 
 [requires]
 python_version = "3.7"

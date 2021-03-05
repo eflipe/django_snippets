@@ -13,6 +13,7 @@ from django.views.generic.edit import (
 )
 
 from snippets.models import Snippet, Language
+from snippets.tasks import enviar_mail
 
 
 class IndexListView(generic.ListView):
@@ -62,6 +63,14 @@ class SnippetCreation(LoginRequiredMixin, CreateView):
         initial = super(SnippetCreation, self).get_initial()
         initial.update({'user': self.request.user})
         return initial
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        snippet = self.object.snippet
+        enviar_mail.delay("Asunto muy importante", f"Contenido mensaje: {snippet}", f"{self.request.user.email}")
+
+        form.save()
+        return super(SnippetCreation, self).form_valid(form)
 
 
 class SnippetEdit(UpdateView):

@@ -132,3 +132,10 @@ CELERY_TIMEZONE = 'America/Argentina/Buenos_Aires'
 # django-heroku
 import django_heroku
 django_heroku.settings(locals())
+
+# Emails
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = ""
+SERVER_EMAIL = ""
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
